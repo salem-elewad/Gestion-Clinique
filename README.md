@@ -71,3 +71,4 @@ mise en place d'un system pour la gestions des hopitaux aux centre teyarett
 >>>>>>> 967a16336a2c02fca45d90cf6462b7496894e00b
 # Clinique
 # Clinique
+# Gestion-Clinique
