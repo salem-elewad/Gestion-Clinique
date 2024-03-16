@@ -22,9 +22,11 @@ class Examen extends Model
         return $this->belongsTo(Analyse::class, 'id_analyse');
     } */
 
-    public function analyses()
-    {
-        return $this->hasMany(Analyse::class, 'examen_id');
-    }
+  // Dans le modèle Examen
+public function analyses()
+{
+    return $this->hasMany(Analyse::class);
+}
+
 
 }

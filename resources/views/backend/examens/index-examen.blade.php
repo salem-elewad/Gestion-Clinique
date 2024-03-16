@@ -28,9 +28,9 @@
             <tr>
                 <th>ID</th>
                 <th>Patient</th>
-                <th>Analyse</th>
+                <th>type analyse</th>
                 <th>Prix Analyse</th>
-                <th>Date de Création</th>
+              
                 <!-- Ajoutez d'autres colonnes si nécessaire -->
                 <th>Action</th>
             </tr>
@@ -40,8 +40,10 @@
             <tr>
                 <td>{{ $examen->id }}</td>
                 <td>{{ $examen->patient->nom_patient }}</td>
-                <td>{{ $examen->analyse->type_analyse }}</td>
-                <td>{{ $examen->analyse->prix_analyse }}</td>
+            
+                <td>{{ optional($examen->analyse)->type_analyse }}</td>
+
+               
                 <td>{{ $examen->created_at }}</td>
                 <!-- Ajoutez d'autres colonnes si nécessaire -->
                 <td>

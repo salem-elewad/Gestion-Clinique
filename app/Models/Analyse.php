@@ -20,8 +20,10 @@ class Analyse extends Model
         'id_ser'
     ];
 
-    public function patient(){
-        return $this->belongsTo(Patient::class,'id_patient');
+   
+    public function patients()
+     {
+    return $this->belongsToMany(Patient::class);
     }
 
 

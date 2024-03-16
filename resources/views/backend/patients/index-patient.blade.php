@@ -27,11 +27,8 @@
                                     <tr>
                                         <th>Index</th>
                                         <th>Nom du Patient</th>
-                                        <th>CNAM</th>
-                                        <th>NNI</th>
-                                        <th>Numero</th>
-
-                                        <th>Service</th>
+                                         <th>Type analyse</th>
+                                         <th>Prix analyse</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -40,10 +37,23 @@
                                     <tr>
                                         <td>{{ $key+1 }}</td>
                                         <td>{{ $patient->nom_patient }}</td>
-                                        <td>{{ $patient->cnam }}</td>
-                                        <td>{{ $patient->nni }}</td>
-                                        <td>{{ $patient->num_patient }}</td>
-                                        <td>{{ $patient->service->nom_service }}</td>
+                                        <td>
+                                            @foreach($patient->analyses as $analyse)
+                                                {{ $analyse->type_analyse }}
+                                                @if (!$loop->last)
+                                                    , <!-- Ajoutez une virgule entre les types d'analyse -->
+                                                @endif
+                                            @endforeach
+                                        </td>
+                                     
+                                        <td>
+                                            @foreach($patient->analyses as $analyse)
+                                                {{ $analyse->prix_analyse }}
+                                                @if (!$loop->last)
+                                                    , <!-- Ajoutez une virgule entre les types d'analyse -->
+                                                @endif
+                                            @endforeach
+                                        </td>
                                         <td>
                                             <a href="{{ route('patients.show', $patient->id) }}" class="btn btn-sm btn-info"
                                                 title="Afficher"><i class="fa fa-eye" aria-hidden="true"></i></a>

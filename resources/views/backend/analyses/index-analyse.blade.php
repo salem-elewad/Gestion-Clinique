@@ -43,8 +43,8 @@
                                         <td>{{ $analyse->prix_analyse }}</td>
                                         <td>{{ $analyse->type_analyse }}</td>
                                         <td>{{ $analyse->medecin->nom_medecin }}</td>
-                                        <td>{{ $analyse->patient->nom_patient }}</td>
-                                        <td>{{ $analyse->patient->num_patient }}</td>
+                                      
+                                      
                                         <td>{{ $analyse->date_analyse }}</td>
                           <!--              <td>{{ optional($analyse->user)->name}}</td> -->
                                         <td>

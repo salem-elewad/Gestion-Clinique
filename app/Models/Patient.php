@@ -13,7 +13,8 @@ class Patient extends Model
         'nom_patient',
         'cnam',
         'nni',
-        'id_service'
+        'id_service',
+        'analyse_id'
     ];
 
             public function consultations()
@@ -30,7 +31,9 @@ class Patient extends Model
                 return $this->hasMany(Soins::class, 'id_patient');
             }
 
-            public function analyses(){
-                return $this->hasMany(Analyse::class, 'id_patient');
+        
+            public function analyses()
+            {
+                return $this->belongsToMany(Analyse::class);
             }
 }
