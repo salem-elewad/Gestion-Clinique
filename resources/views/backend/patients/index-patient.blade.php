@@ -62,6 +62,11 @@
                                             <a href="{{ route('patients.show', $patient->id) }}" class="btn btn-sm btn-info"
                                                 title="Afficher"><i class="fa fa-eye" aria-hidden="true"></i></a>
 
+                                                <td>
+                                                    <!-- Autres boutons d'action -->
+                                                    <a href="{{ route('resultat.index') }}" class="btn btn-sm btn-primary" title="Voir les résultats"><i class="fas fa-poll"></i> Voir les résultats</a>
+                                                </td> 
+
                                             <a href="{{ route('patients.edit', $patient->id) }}" class="btn btn-sm btn-warning" title="Modifier"><i class="fas fa-edit"></i></a>
                                             @can('delete-patient')
                                             <form action="{{ route('patients.destroy', $patient->id) }}" method="POST" style="display: inline;">
@@ -69,7 +74,8 @@
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm btn-danger" data-confirm-delete="true"><i class="fas fa-trash-alt"></i></button>
                                             </form>
-
+                                          
+                       
                                             @endcan
                                         </td>
                                     </tr>

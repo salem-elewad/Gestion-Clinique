@@ -15,6 +15,7 @@ use App\Http\Controllers\SoinsController;
 use App\Http\Controllers\AnalyseController;
 use App\Http\Controllers\InterventionController;
 use App\Http\Controllers\ExamenController;
+use App\Http\Controllers\ResultatController;
 use App\Models\Examen;
 use App\Models\Analyse;
 use App\Models\Intervention;
@@ -138,6 +139,9 @@ Route::get('/patients/{id}/nni', [App\Http\Controllers\PatientController::class,
 Route::get('/examens/create', [ExamenController::class, 'create'])->name('examens.create');
 Route::post('/examens', [ExamenController::class, 'store'])->name('examens.store');
 Route::resource('examens', ExamenController::class);
+// resultats
+Route::get('/resultat', [App\Http\Controllers\ResultatController::class, 'index'])->name('resultat.index');
+
 
 
 
