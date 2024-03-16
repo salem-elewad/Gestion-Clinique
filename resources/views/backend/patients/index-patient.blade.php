@@ -29,6 +29,7 @@
                                         <th>Nom du Patient</th>
                                          <th>Type analyse</th>
                                          <th>Prix analyse</th>
+                                         <th>Totale</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -39,21 +40,24 @@
                                         <td>{{ $patient->nom_patient }}</td>
                                         <td>
                                             @foreach($patient->analyses as $analyse)
-                                                {{ $analyse->type_analyse }}
-                                                @if (!$loop->last)
-                                                    , <!-- Ajoutez une virgule entre les types d'analyse -->
-                                                @endif
+                                                {{ $analyse->type_analyse }}<br>
                                             @endforeach
                                         </td>
-                                     
                                         <td>
                                             @foreach($patient->analyses as $analyse)
-                                                {{ $analyse->prix_analyse }}
-                                                @if (!$loop->last)
-                                                    , <!-- Ajoutez une virgule entre les types d'analyse -->
-                                                @endif
+                                                {{ $analyse->prix_analyse }}<br>
                                             @endforeach
                                         </td>
+                                        <td>
+                                            @php
+                                                $total = 0;
+                                                foreach($patient->analyses as $analyse) {
+                                                    $total += $analyse->prix_analyse;
+                                                }
+                                                echo $total;
+                                            @endphp
+                                        </td>
+
                                         <td>
                                             <a href="{{ route('patients.show', $patient->id) }}" class="btn btn-sm btn-info"
                                                 title="Afficher"><i class="fa fa-eye" aria-hidden="true"></i></a>
@@ -71,18 +75,7 @@
                                     </tr>
                                     @endforeach
                                 </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>Index</th>
-                                        <th>Nom du Patient</th>
-                                        <th>CNAM</th>
-                                        <th>NNI</th>
-                                        <th>Numero</th>
-
-                                        <th>Service</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </tfoot>
+                              
                             </table>
                         </div>
                     </div>
