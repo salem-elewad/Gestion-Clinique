@@ -36,4 +36,8 @@ class Patient extends Model
             {
                 return $this->belongsToMany(Analyse::class);
             }
+            public function resultats()
+            {
+                return $this->hasMany(Resultat::class, 'patient_id');
+            }
 }

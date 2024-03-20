@@ -19,15 +19,12 @@
                         </div>
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped">
-                                <div class="pull-right">
-                                    <a class="btn btn-primary btn-sm" href="{{ route('patients.create') }}">Ajouter</a>
-                                    <br> <hr>
-                                </div>
                                 <thead>
                                     <tr>
                                         <th>Index</th>
                                         <th>Nom du Patient</th>
-                                        <th>Résultat</th>
+                                        <th>Analyses</th>
+                                        <th>Résultats</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -37,8 +34,25 @@
                                         <td>{{ $key+1 }}</td>
                                         <td>{{ $patient->nom_patient }}</td>
                                         <td>
-                                            <!-- Champ de saisie pour le résultat de l'analyse -->
-                                            <input type="text" name="resultat_analyse" class="form-control" placeholder="Entrez le résultat...">
+                                            <ul>
+                                                @foreach($patient->analyses as $analyse)
+                                                    <li>{{ $analyse->type_analyse }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <form action="{{ route('patients.store-resultat', $patient->id) }}" method="POST">
+                                                @csrf
+                                                <ul>
+                                                    @foreach($patient->analyses as $analyse)
+                                                        <li>
+                                                            {{ $analyse->type_analyse }}:
+                                                            <input type="string" name="resultat[{{ $analyse->id }}]" class="form-control" placeholder="Entrez le résultat...">
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                                <button type="submit" class="btn btn-sm btn-success">Enregistrer</button>
+                                            </form>
                                         </td>
                                         <td>
                                             <a href="{{ route('patients.show', $patient->id) }}" class="btn btn-sm btn-info" title="Afficher"><i class="fa fa-eye" aria-hidden="true"></i></a>
@@ -50,8 +64,6 @@
                                                     <button type="submit" class="btn btn-sm btn-danger" data-confirm-delete="true"><i class="fas fa-trash-alt"></i></button>
                                                 </form>
                                             @endcan
-                                            <!-- Bouton pour enregistrer le résultat -->
-                                            <button type="button" class="btn btn-sm btn-success btn-save-result" data-patient-id="{{ $patient->id }}">Enregistrer</button>
                                         </td>
                                     </tr>
                                     @endforeach

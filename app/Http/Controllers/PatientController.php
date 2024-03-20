@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Patient;
 use App\Models\Service;
 use App\Models\Analyse;
+use App\Models\Resultat;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -54,7 +55,37 @@ class PatientController extends Controller
     
         // Redirigez l'utilisateur vers la page d'index des patients avec un message de succès
         return redirect()->route('patients.index')->with('success', 'Nouveau patient et analyses ajoutées avec succès !');
+   
     }
+
+    public function storeResultat(Request $request, $id)
+{
+    // Valider les données du formulaire
+    /*
+    $request->validate([
+        'resultat' => 'required|string',
+    ]);
+    */
+   //dd($request->all());
+   $request->validate([
+    'resultat.*' => 'required|string',
+]);
+
+// Récupérer le patient
+$patient = Patient::findOrFail($id);
+
+// Créer un nouveau résultat pour chaque élément du tableau "resultat"
+foreach ($request->resultat as $analyseId => $resultat) {
+    $resultatModel = new Resultat();
+    $resultatModel->resultat = $resultat;
+    $resultatModel->analyse_id = $analyseId;
+    $patient->resultats()->save($resultatModel);
+}
+
+// Rediriger l'utilisateur avec un message de succès
+return redirect()->back()->with('success', 'Résultats enregistrés avec succès !');
+
+}
     
 
     // Autres méthodes du contrôleur

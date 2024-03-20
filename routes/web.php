@@ -141,6 +141,8 @@ Route::post('/examens', [ExamenController::class, 'store'])->name('examens.store
 Route::resource('examens', ExamenController::class);
 // resultats
 Route::get('/resultat', [App\Http\Controllers\ResultatController::class, 'index'])->name('resultat.index');
+Route::post('/resultat/store', [App\Http\Controllers\ResultatController::class, 'store'])->name('resultat.store');
+Route::post('/patients/{id}/store-resultat', [App\Http\Controllers\PatientController::class, 'storeResultat'])->name('patients.store-resultat');
 
 
 
