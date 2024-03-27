@@ -27,9 +27,9 @@
                                     <tr>
                                         <th>Index</th>
                                         <th>Nom du Patient</th>
-                                         <th>Type analyse</th>
-                                         <th>Prix analyse</th>
-                                         <th>Totale</th>
+                                        <th>Type analyse</th>
+                                        <th>Prix analyse</th>
+                                        <th>Total</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -39,49 +39,38 @@
                                         <td>{{ $key+1 }}</td>
                                         <td>{{ $patient->nom_patient }}</td>
                                         <td>
+                                            <!-- Afficher les types d'analyse du patient -->
                                             @foreach($patient->analyses as $analyse)
-                                                {{ $analyse->type_analyse }}<br>
+                                                {{ $analyse->type_analyse }}
+                                                @if(!$loop->last)
+                                                    <br>
+                                                @endif
                                             @endforeach
                                         </td>
                                         <td>
+                                            <!-- Afficher les prix des analyses du patient -->
                                             @foreach($patient->analyses as $analyse)
-                                                {{ $analyse->prix_analyse }}<br>
+                                                {{ $analyse->prix_analyse }}
+                                                @if(!$loop->last)
+                                                    <br>
+                                                @endif
                                             @endforeach
                                         </td>
                                         <td>
-                                            @php
-                                                $total = 0;
-                                                foreach($patient->analyses as $analyse) {
-                                                    $total += $analyse->prix_analyse;
-                                                }
-                                                echo $total;
-                                            @endphp
+                                            <!-- Calculer et afficher le total -->
+                                            {{ $patient->analyses->sum('prix_analyse') }}
                                         </td>
-
                                         <td>
-                                            <a href="{{ route('patients.show', $patient->id) }}" class="btn btn-sm btn-info"
-                                                title="Afficher"><i class="fa fa-eye" aria-hidden="true"></i></a>
-
-                                                <td>
-                                                    <!-- Autres boutons d'action -->
-                                                    <a href="{{ route('resultat.index') }}" class="btn btn-sm btn-primary" title="Voir les résultats"><i class="fas fa-poll"></i> Voir les résultats</a>
-                                                </td> 
-
-                                            <a href="{{ route('patients.edit', $patient->id) }}" class="btn btn-sm btn-warning" title="Modifier"><i class="fas fa-edit"></i></a>
-                                            @can('delete-patient')
-                                            <form action="{{ route('patients.destroy', $patient->id) }}" method="POST" style="display: inline;">
+                                            <!-- Lien pour voir les résultats du patient -->
+                                            <form action="{{ route('patients.view-results', $patient->id) }}" method="GET" style="display: inline-block;">
                                                 @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger" data-confirm-delete="true"><i class="fas fa-trash-alt"></i></button>
+                                                <button type="submit" class="btn btn-success btn-sm">Voir Résultat</button>
                                             </form>
-                                          
-                       
-                                            @endcan
+                                            <a href="{{ route('patients.print-results', $patient->id) }}" class="btn btn-primary btn-sm">Imprimer</a>
                                         </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
-                              
                             </table>
                         </div>
                     </div>

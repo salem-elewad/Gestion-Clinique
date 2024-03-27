@@ -142,8 +142,19 @@ Route::resource('examens', ExamenController::class);
 // resultats
 Route::get('/resultat', [App\Http\Controllers\ResultatController::class, 'index'])->name('resultat.index');
 Route::post('/resultat/store', [App\Http\Controllers\ResultatController::class, 'store'])->name('resultat.store');
-Route::post('/patients/{id}/store-resultat', [App\Http\Controllers\PatientController::class, 'storeResultat'])->name('patients.store-resultat');
+//Route::get('/patients/{id}/printResults', [PatientController::class, 'printResults'])->name('patients.printResults');
+//Route::post('/patients/{id}/store-resultat', [PatientController::class, 'storeResultat'])->name('patients.store-resultat');
+Route::get('/patients/{id}/print-results', [PatientController::class, 'printResults'])->name('patients.print-results');
 
+
+// Route pour afficher la vue des résultats et gérer la soumission des nouveaux résultats
+//Route::get('/patients/{id}/view-results', [PatientController::class, 'viewResults'])->name('patients.view-results');
+Route::post('/patients/{id}/store-resultat', [PatientController::class, 'storeResultat'])->name('patients.store-resultat');
+
+//Route::get('/patients/{id}/view-results', [PatientController::class, 'viewResults'])->name('patients.view-results');
+Route::get('/patients/{id}/view-results', [PatientController::class, 'viewResults'])->name('patients.view-results');
+
+Route::get('/patients/{id}/print-results', [PatientController::class, 'printResults'])->name('patients.print-results');
 
 
 

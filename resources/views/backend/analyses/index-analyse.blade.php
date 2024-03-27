@@ -27,10 +27,7 @@
 
                                         <th>Prix de l'Analyse</th>
                                         <th>Type de l'Analyse</th>
-                                        <th>Médecin</th>
-                                        <th>Patient</th>
-                                        <th>Numero Patient</th>
-                                        <th>Date de l'Analyse</th>
+                                      
                                <!--         <th>Creer par</th> -->
                                         <th>Actions</th>
                                     </tr>
@@ -42,12 +39,7 @@
                                    
                                         <td>{{ $analyse->prix_analyse }}</td>
                                         <td>{{ $analyse->type_analyse }}</td>
-                                        <td>{{ $analyse->medecin->nom_medecin }}</td>
-                                      
-                                      
-                                        <td>{{ $analyse->date_analyse }}</td>
-                          <!--              <td>{{ optional($analyse->user)->name}}</td> -->
-                                        <td>
+                                       
                                             <a href="{{ route('analyses.show', $analyse->id) }}" class="btn btn-sm btn-info" title="Détails"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                             <a href="{{ route('analyses.edit', $analyse->id) }}" class="btn btn-sm btn-warning" title="Modifier"><i class="fas fa-edit"></i></a>
                                            @can('delete-analyse')

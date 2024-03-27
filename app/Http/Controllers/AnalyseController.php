@@ -30,17 +30,13 @@ class AnalyseController extends Controller
         $request->validate([
             'type_analyse' => 'required|string|max:255',
             'prix_analyse' => 'required|numeric',
-            'id_medecin' => 'required|exists:medecins,id',
-            'id_patient' => 'required|exists:patients,id',
+          
         ]);
 
         $analyse = new Analyse();
         $analyse->type_analyse = $request->input('type_analyse');
         $analyse->prix_analyse = $request->input('prix_analyse');
-        $analyse->id_medecin = $request->input('id_medecin');
-        $analyse->id_patient = $request->input('id_patient');
-        $analyse->date_analyse = now();
-        $analyse->id_user = Auth::user()->id;
+       
         $analyse->save();
 
         return Redirect::to('analyses')->with('success', 'L\'analyse a été créée avec succès.');
@@ -65,17 +61,13 @@ class AnalyseController extends Controller
         $request->validate([
             'type_analyse' => 'required|string|max:255',
             'prix_analyse' => 'required|numeric',
-            'id_medecin' => 'required|exists:medecins,id',
-            'id_patient' => 'required|exists:patients,id',
+           
         ]);
 
         $analyse = Analyse::findOrFail($id);
         $analyse->type_analyse = $request->input('type_analyse');
         $analyse->prix_analyse = $request->input('prix_analyse');
-        $analyse->id_medecin = $request->input('id_medecin');
-        $analyse->id_patient = $request->input('id_patient');
-        $analyse->date_analyse = now();
-        $analyse->id_user = Auth::user()->id;
+       
         $analyse->save();
 
         return redirect()->route('index-analyse')->with('success', 'L\'analyse a été modifié avec succès.');

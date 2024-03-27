@@ -11,5 +11,9 @@ class Resultat extends Model
  
 
     protected $fillable = ['resultat'];
+    public function analyse()
+    {
+        return $this->belongsTo(Analyse::class);
+    }
 
 }

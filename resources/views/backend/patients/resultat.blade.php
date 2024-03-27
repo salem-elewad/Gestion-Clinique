@@ -55,6 +55,8 @@
                                             </form>
                                         </td>
                                         <td>
+                                            <!-- Bouton d'impression -->
+                                            <a href="{{ route('patients.print-results', $patient->id) }}" class="btn btn-sm btn-info" title="Imprimer"><i class="fas fa-print"></i> Imprimer</a>
                                             <a href="{{ route('patients.show', $patient->id) }}" class="btn btn-sm btn-info" title="Afficher"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                             <a href="{{ route('patients.edit', $patient->id) }}" class="btn btn-sm btn-warning" title="Modifier"><i class="fas fa-edit"></i></a>
                                             @can('delete-patient')
@@ -65,6 +67,7 @@
                                                 </form>
                                             @endcan
                                         </td>
+                                        
                                     </tr>
                                     @endforeach
                                 </tbody>

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('cnam');
             $table->string('nni');
             $table->unsignedBigInteger('id_service');
-            $table->foreign('id_service')->references('id')->on('services');
+           $table->foreign ('id_service')->references('id')->on('services');
             $table->timestamps();
         });
     }

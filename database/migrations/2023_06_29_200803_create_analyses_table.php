@@ -16,13 +16,6 @@ return new class extends Migration
             $table->id();
             $table->string('type_analyse');
             $table->float('prix_analyse');
-            $table->unsignedBigInteger('id_medecin');
-            $table->foreign('id_medecin')->references('id')->on('medecins');
-            $table->unsignedBigInteger('id_patient');
-            $table->foreign('id_patient')->references('id')->on('patients');
-            $table->unsignedBigInteger('id_user');
-            $table->foreign('id_user')->references('id')->on('users');
-            $table->date('date_analyse')->nullable();
             $table->timestamps();
 
         });

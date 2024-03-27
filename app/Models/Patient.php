@@ -26,16 +26,17 @@ class Patient extends Model
             public function service(){
                 return $this->belongsTo(Service::class,'id_service');
             }
+            public function analyses()
+            {
+                return $this->belongsToMany(Analyse::class);
+            }
 
             public function soins(){
                 return $this->hasMany(Soins::class, 'id_patient');
             }
 
         
-            public function analyses()
-            {
-                return $this->belongsToMany(Analyse::class);
-            }
+          
             public function resultats()
             {
                 return $this->hasMany(Resultat::class, 'patient_id');

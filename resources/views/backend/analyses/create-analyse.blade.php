@@ -25,31 +25,7 @@
                                     <label>Prix de l'Analyse :</label>
                                     <input type="number" name="prix_analyse" class="form-control" required>
                                 </div>
-                                <div class="form-group">
-                                    <label>Médecin :</label>
-                                    <select name="id_medecin" class="form-control" required>
-                                        <option value="">Sélectionnez un médecin</option>
-                                        @foreach ($medecins as $medecin)
-                                            <option value="{{ $medecin->id }}">{{ $medecin->nom_medecin }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Patient :</label>
-                                    <select id="patientDropdown" name="id_patient" class="form-control" required>
-                                        <option value="">Sélectionnez un patient</option>
-                                        @foreach ($patients as $patient)
-                                            <option value="{{ $patient->id }}">{{ $patient->nom_patient }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <!-- Affichez le numéro de téléphone au-dessus du champ nom du patient -->
-                                <div id="telephoneDisplay"></div>
-
-                                <div class="form-group">
-                                    <label for="date_analyse">Date d'analyse</label>
-                                    <input type="date" name="date_analyse" class="form-control" placeholder="Date d'analyse" required>
-                                </div>
+                               
                                 <button type="submit" class="btn btn-primary">Créer</button>
                             </form>
                         </div>

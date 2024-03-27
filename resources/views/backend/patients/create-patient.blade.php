@@ -40,16 +40,14 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="analyse_id[]">Analyses</label>
-                                    <select name="analyse_id[]" class="form-control" multiple required>
+                                    <label for="analyse_id">Analyse(s)</label>
+                                    <select name="analyse_id[]" class="form-control" multiple>
+                                        <option value="">Sélectionnez une ou plusieurs analyses</option>
                                         @foreach($analyses as $analyse)
                                             <option value="{{ $analyse->id }}">{{ $analyse->type_analyse }}</option>
                                         @endforeach
                                     </select>
                                 </div>
-                                
-
-                               
                                 <button type="submit" class="btn btn-primary">Ajouter</button>
                             </form>
                         </div>
