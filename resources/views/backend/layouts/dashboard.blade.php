@@ -12,7 +12,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ URL::to('home') }}">Acceuil</a></li>
-              <li class="breadcrumb-item active">Centre Teyaret</li>
+              <li class="breadcrumb-item active">Clinique Essava</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->

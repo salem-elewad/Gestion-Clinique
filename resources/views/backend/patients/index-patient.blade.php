@@ -67,6 +67,9 @@
                                                 <button type="submit" class="btn btn-success btn-sm">Voir Résultat</button>
                                             </form>
                                             <a href="{{ route('patients.print-results', $patient->id) }}" class="btn btn-primary btn-sm">Imprimer</a>
+                                            <!-- Bouton pour imprimer les résultats -->
+<a href="{{ route('patients.print-results2', $patient->id) }}" class="btn btn-primary">Imprimer Résultats</a>
+
                                         </td>
                                     </tr>
                                     @endforeach

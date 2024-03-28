@@ -156,7 +156,7 @@ Route::get('/patients/{id}/view-results', [PatientController::class, 'viewResult
 
 Route::get('/patients/{id}/print-results', [PatientController::class, 'printResults'])->name('patients.print-results');
 
-
+Route::get('/patients/{id}/print-results2', [PatientController::class, 'printResults2'])->name('patients.print-results2');
 
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/stats-intervention', [App\Http\Controllers\InterventionController::class, 'stats'])->name('intervention.stats');

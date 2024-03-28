@@ -108,6 +108,14 @@ public function printResults($id)
         // Retourner la vue d'impression avec les données du patient
         return view('backend.patients.print-results', compact('patient'));
 }
+public function printResults2($id)
+{
+    // Récupérer le patient avec ses résultats
+    $patient = Patient::with('resultats')->findOrFail($id);
+    
+    // Retourner la vue d'impression avec les données du patient
+    return view('backend.patients.print-results2', compact('patient'));
+}
     
 
     // Autres méthodes du contrôleur
