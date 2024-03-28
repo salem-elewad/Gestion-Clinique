@@ -14,6 +14,8 @@ class Analyse extends Model
        
         'type_analyse',
         'prix_analyse',
+        'unites',
+        'valeur_normale',
        
     ];
 

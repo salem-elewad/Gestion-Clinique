@@ -30,12 +30,16 @@ class AnalyseController extends Controller
         $request->validate([
             'type_analyse' => 'required|string|max:255',
             'prix_analyse' => 'required|numeric',
+            'unites' => 'nullable|string|max:255',
+        'valeur_normale' => 'nullable|string|max:255',
           
         ]);
 
         $analyse = new Analyse();
         $analyse->type_analyse = $request->input('type_analyse');
         $analyse->prix_analyse = $request->input('prix_analyse');
+        $analyse->unites = $request->input('unites');
+        $analyse->valeur_normale = $request->input('valeur_normale');
        
         $analyse->save();
 
@@ -61,13 +65,15 @@ class AnalyseController extends Controller
         $request->validate([
             'type_analyse' => 'required|string|max:255',
             'prix_analyse' => 'required|numeric',
-           
+            'unites' => 'nullable|string|max:255',
+        'valeur_normale' => 'nullable|string|max:255',
         ]);
 
         $analyse = Analyse::findOrFail($id);
         $analyse->type_analyse = $request->input('type_analyse');
         $analyse->prix_analyse = $request->input('prix_analyse');
-       
+        $analyse->unites = $request->input('unites');
+        $analyse->valeur_normale = $request->input('valeur_normale');
         $analyse->save();
 
         return redirect()->route('index-analyse')->with('success', 'L\'analyse a été modifié avec succès.');

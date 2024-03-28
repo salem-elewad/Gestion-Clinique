@@ -25,6 +25,15 @@
                                     <label>Prix de l'Analyse :</label>
                                     <input type="number" name="prix_analyse" class="form-control" required>
                                 </div>
+                                 <!-- Ajouter les champs pour les unités et la valeur normale -->
+                                 <div class="form-group">
+                                    <label>Unités :</label>
+                                    <input type="text" name="unites" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>Valeur Normale :</label>
+                                    <input type="text" name="valeur_normale" class="form-control">
+                                </div>
                                
                                 <button type="submit" class="btn btn-primary">Créer</button>
                             </form>

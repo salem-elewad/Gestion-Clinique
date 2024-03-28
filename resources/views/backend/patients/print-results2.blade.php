@@ -64,7 +64,7 @@
     <div class="container">
         <div class="header">
             <img src="{{ asset('backend/dist/img/essava.jpeg') }}" alt="Clinique Essava">
-            <h1>Nom de la Clinique</h1>
+            <h1>Clinique Essava</h1>
         </div>
         <div class="patient-info">
             <p><strong>Patient:</strong> {{ $patient->nom_patient }}</p>
@@ -74,6 +74,8 @@
                 <tr>
                     <th>Type Analyse</th>
                     <th>Résultat</th>
+                    <th>Unités</th>
+                    <th>Valeur Normale</th>
                 </tr>
             </thead>
             <tbody>
@@ -81,6 +83,8 @@
                 <tr>
                     <td>{{ $resultat->analyse->type_analyse }}</td>
                     <td>{{ $resultat->resultat }}</td>
+                    <td>{{ $resultat->analyse->unites }}</td>
+                    <td>{{ $resultat->analyse->valeur_normale }}</td>
                 </tr>
                 @endforeach
             </tbody>
